@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  unifi:
+    container_name: 'unifi'
+    restart: unless-stopped
+    build:
+      context: '.'
+      args:
+        UNIFI_VERSION: '7.1.66'
+    image: 'unifi:latest'
+    volumes:
+      - 'unifi-data:/usr/lib/unifi/data:rw'
+    network_mode: 'host'
+
+volumes:
+  unifi-data:
